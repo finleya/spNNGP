@@ -1,0 +1,13 @@
+^\.github$
+^\.gitignore$
+^_pkgdown\.yml$
+^README\.Rmd$
+^pkgdown$
+^docs$
+^public$
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.git$
+^\.gitignore$
+^src/.*\.(o|so|dll|dylib)$
+^src/symbols\.rds$

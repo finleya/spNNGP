@@ -1,0 +1,26 @@
+url: https://finleya.github.io/spNNGP/
+
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+
+reference:
+  - title: Model fitting
+    contents:
+      - spNNGP
+      - spConjNNGP
+      - PGLogit
+  - title: Diagnostics and methods
+    contents:
+      - spDiag
+      - starts_with("predict")
+      - starts_with("summary")
+      - starts_with("print")
+  - title: Data
+    contents:
+      - BCEF.rda
+      - MI_TSCA.rda
