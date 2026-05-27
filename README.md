@@ -1,22 +1,34 @@
 # spNNGP
 
-`spNNGP` fits univariate Bayesian spatial regression models for large
-datasets using nearest neighbor Gaussian processes.
+[![CRAN status](https://www.r-pkg.org/badges/version/spNNGP)](https://CRAN.R-project.org/package=spNNGP)
+[![R-CMD-check](https://github.com/finleya/spNNGP/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/finleya/spNNGP/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/finleya/spNNGP/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/finleya/spNNGP/actions/workflows/pkgdown.yaml)
 
-The package supports response and latent NNGP models for Gaussian
-outcomes, latent NNGP models for binomial outcomes, and conjugate NNGP
-models.
+<img src="man/figures/logo.png" alt="spNNGP package hex logo" align="left" width="130" style="margin: 0 1.2rem 0.6rem 0;">
+
+`spNNGP` fits univariate Bayesian spatial regression models for large
+datasets using nearest neighbor Gaussian processes (NNGPs). NNGP models
+replace dense Gaussian process calculations with sparse neighbor-based
+approximations, making fully Bayesian spatial regression practical for
+datasets that are too large for conventional Gaussian process methods.
+
+<br clear="left"/>
 
 ## Installation
 
-Install the development version from GitHub after the repository is
-published:
+Install the CRAN release with:
+
+```r
+install.packages("spNNGP")
+```
+
+Install the development version from GitHub with:
 
 ```r
 remotes::install_github("finleya/spNNGP")
 ```
 
-## Example
+## Basic Use
 
 ```r
 library(spNNGP)
@@ -47,18 +59,27 @@ fit <- spNNGP(
 summary(fit)
 ```
 
-## References
+## Functionality
+
+The package provides:
+
+- Response and latent NNGP models for Gaussian outcomes.
+- Latent NNGP models for binomial outcomes.
+- Conjugate NNGP models for faster Gaussian analyses.
+- Prediction and posterior summaries through familiar R methods.
+- MCMC diagnostics and model summaries for fitted spatial models.
+
+## Citations
+
+If you use `spNNGP`, please cite:
 
 Finley, A. O., Datta, A., and Banerjee, S. (2022). spNNGP R Package for
 Nearest Neighbor Gaussian Process Models. *Journal of Statistical
 Software*, 103(5). doi:10.18637/jss.v103.i05.
+<https://www.jstatsoft.org/article/view/v103i05>
 
 Finley, A. O., Datta, A., Cook, B. D., Morton, D. C., Andersen, H. E.,
 and Banerjee, S. (2019). Efficient algorithms for Bayesian nearest
 neighbor Gaussian processes. *Journal of Computational and Graphical
 Statistics*, 28(2), 401-414. doi:10.1080/10618600.2018.1537924.
-
-Datta, A., Banerjee, S., Finley, A. O., and Gelfand, A. E. (2016).
-Hierarchical nearest-neighbor Gaussian process models for large
-geostatistical datasets. *Journal of the American Statistical
-Association*, 111(514), 800-812. doi:10.1080/01621459.2015.1044091.
+Preprint: <https://arxiv.org/pdf/1702.00434>

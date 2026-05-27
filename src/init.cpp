@@ -7,8 +7,12 @@
 #include <stdlib.h> // for NULL
 #include <R_ext/Rdynload.h>
 #include "spNNGP.h"
+#include "nn.h"
 
 static const R_CallMethodDef CallEntries[] = {
+    {"mkUIndx", (DL_FUNC) &mkUIndx, 8},
+    {"mkNNIndx", (DL_FUNC) &mkNNIndx, 7},
+    {"mkNNIndxCB", (DL_FUNC) &mkNNIndxCB, 7},
     {"rNNGP", (DL_FUNC) &rNNGP, 28},
     {"sNNGP", (DL_FUNC) &sNNGP, 29},
     {"sNNGPLogit", (DL_FUNC) &sNNGPLogit, 27},
@@ -21,6 +25,7 @@ static const R_CallMethodDef CallEntries[] = {
     {NULL, NULL, 0}
 };
 
+extern "C"
 void R_init_spNNGP(DllInfo *dll)
 {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);

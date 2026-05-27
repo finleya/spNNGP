@@ -95,11 +95,11 @@ PGLogit <- function(formula, weights = 1, data = parent.frame(), n.samples, n.om
 
         ##fitted
         out$y.hat.samples <- out$X%*%t(as.matrix(out$p.beta.samples)[s.indx,,drop=FALSE])
-        out$y.hat.quantiles <- t(apply(out$y.hat.samples, 1, function(x) quantile(x, prob=c(0.5, 0.05, 0.975))))
+        out$y.hat.quants <- t(apply(out$y.hat.samples, 1, function(x) quantile(x, prob=c(0.5, 0.05, 0.975))))
+        out$y.hat.quantiles <- out$y.hat.quants
 
         ##replicates
-        prob.samples <- 1/(1+exp(-out$y.hat.samples))
-        out$y.rep.samples <- t(apply(prob.samples, 1, function(x) rbinom(n, out$weights, x)))
+        out$y.rep.samples <- apply(1/(1+exp(-out$y.hat.samples)), 2, function(x) rbinom(n, out$weights, x))
         out$y.rep.quants <- t(apply(out$y.rep.samples, 1, function(x) quantile(x, prob=c(0.5, 0.05, 0.975))))
         out$sub.sample <- sub.sample
         out$s.indx <- s.indx

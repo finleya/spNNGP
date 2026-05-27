@@ -138,6 +138,10 @@ void fastNN(int m, int n, double *coords, int ui, double *u, int *sIndx, int *rS
   int i,j,k;
   bool up, down;
   double dm, de;
+
+  if(m <= 0){
+    return;
+  }
   
   //rSNNDist will hold de (i.e., squared Euclidean distance) initially.
   for(i = 0; i < m; i++){
@@ -232,8 +236,8 @@ extern "C" {
     
     int i, iNNIndx, iNN;
     
-    int *sIndx = new int[n];
-    double *u = new double[n];
+    int *sIndx = (int *) R_alloc(n, sizeof(int));
+    double *u = (double *) R_alloc(n, sizeof(double));
     
     for(i = 0; i < n; i++){
       sIndx[i] = i;
@@ -252,7 +256,7 @@ extern "C" {
       nnIndxLU[n+sIndx[i]] = iNN;   
       fastNN(iNN, n, coords, i, u, sIndx, &nnIndx[iNNIndx], &nnDist[iNNIndx]);
     } 
-    
+
     return R_NilValue;
   }
 }

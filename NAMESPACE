@@ -1,4 +1,4 @@
-useDynLib(spNNGP, .registration=TRUE)
+useDynLib(spNNGP, .registration=TRUE, .fixes="C_")
 
 export(spNNGP)
 export(spConjNNGP)

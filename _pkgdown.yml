@@ -22,5 +22,5 @@ reference:
       - starts_with("print")
   - title: Data
     contents:
-      - BCEF.rda
-      - MI_TSCA.rda
+      - BCEF
+      - MI_TSCA

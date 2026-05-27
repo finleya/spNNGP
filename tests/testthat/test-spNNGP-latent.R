@@ -1,40 +1,3 @@
-make_gaussian_data <- function(n = 40) {
-  coords <- cbind(runif(n), runif(n))
-  x <- rnorm(n)
-  y <- 1 + 0.5 * x + rnorm(n)
-
-  list(
-    y = y,
-    x = x,
-    coords = coords,
-    starting = list(beta = c(0, 0), sigma.sq = 1, tau.sq = 1, phi = 3),
-    tuning = list(phi = 0.1),
-    priors = list(
-      sigma.sq.IG = c(2, 1),
-      tau.sq.IG = c(2, 1),
-      phi.Unif = c(0.1, 30)
-    )
-  )
-}
-
-make_binomial_data <- function(n = 40) {
-  coords <- cbind(runif(n), runif(n))
-  x <- rnorm(n)
-  y <- rbinom(n, 1, plogis(-0.2 + 0.8 * x))
-
-  list(
-    y = y,
-    x = x,
-    coords = coords,
-    starting = list(beta = c(0, 0), sigma.sq = 1, phi = 3),
-    tuning = list(phi = 0.1),
-    priors = list(
-      sigma.sq.IG = c(2, 1),
-      phi.Unif = c(0.1, 30)
-    )
-  )
-}
-
 test_that("spNNGP validates neighbor and thread counts before native calls", {
   set.seed(1)
   dat <- make_gaussian_data(n = 10)
@@ -130,4 +93,26 @@ test_that("latent Gaussian and binomial samplers produce expected sample shapes"
 
   expect_equal(dim(bfit$p.w.samples), c(35L, 6L))
   expect_equal(colnames(bfit$p.theta.samples), c("sigma.sq", "phi"))
+})
+
+test_that("latent covariance failures return R errors instead of crashing", {
+  set.seed(5)
+  dat <- make_gaussian_data(n = 20)
+  dat$coords[5, ] <- dat$coords[4, ]
+
+  expect_error(
+    spNNGP(
+      dat$y ~ dat$x,
+      coords = dat$coords,
+      method = "latent",
+      n.neighbors = 5,
+      starting = dat$starting,
+      tuning = dat$tuning,
+      priors = dat$priors,
+      n.samples = 5,
+      n.omp.threads = 2,
+      verbose = FALSE
+    ),
+    "latent covariance decomposition failed"
+  )
 })
