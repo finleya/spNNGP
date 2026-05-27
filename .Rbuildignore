@@ -2,6 +2,7 @@
 ^\.gitignore$
 ^_pkgdown\.yml$
 ^README\.Rmd$
+^index\.md$
 ^pkgdown$
 ^docs$
 ^public$
