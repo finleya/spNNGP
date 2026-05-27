@@ -4,15 +4,11 @@
 [![R-CMD-check](https://github.com/finleya/spNNGP/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/finleya/spNNGP/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/finleya/spNNGP/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/finleya/spNNGP/actions/workflows/pkgdown.yaml)
 
-<img src="man/figures/logo.png" alt="spNNGP package hex logo" align="left" width="130" style="margin: 0 1.2rem 0.6rem 0;">
-
 `spNNGP` fits univariate Bayesian spatial regression models for large
 datasets using nearest neighbor Gaussian processes (NNGPs). NNGP models
 replace dense Gaussian process calculations with sparse neighbor-based
 approximations, making fully Bayesian spatial regression practical for
 datasets that are too large for conventional Gaussian process methods.
-
-<br clear="left"/>
 
 ## Installation
 
@@ -76,7 +72,6 @@ If you use `spNNGP`, please cite:
 Finley, A. O., Datta, A., and Banerjee, S. (2022). spNNGP R Package for
 Nearest Neighbor Gaussian Process Models. *Journal of Statistical
 Software*, 103(5). doi:10.18637/jss.v103.i05.
-<https://www.jstatsoft.org/article/view/v103i05>
 
 Finley, A. O., Datta, A., Cook, B. D., Morton, D. C., Andersen, H. E.,
 and Banerjee, S. (2019). Efficient algorithms for Bayesian nearest

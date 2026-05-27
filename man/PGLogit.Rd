@@ -89,7 +89,8 @@ PGLogit(formula, weights = 1, data = parent.frame(), n.samples,
  Some of the underlying code used for generating random number from the
  Polya-Gamma distribution is taken from the \pkg{pgdraw} package written
  by Daniel F. Schmidt and Enes Makalic. Their code implements Algorithm
- 6 in PhD thesis of Jesse Bennett Windle (2013) \url{https://repositories.lib.utexas.edu/handle/2152/21842}.
+ 6 in the PhD thesis of Jesse Bennett Windle (2013), University of Texas
+ at Austin.
 }
 
 
